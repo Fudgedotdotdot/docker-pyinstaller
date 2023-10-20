@@ -1,5 +1,7 @@
 # PyInstaller Docker Images
 
+Forked from cdrx, run the container using `docker run -v "$(pwd):/src/" pyinstaller <python3 script>`.
+
 **cdrx/pyinstaller-linux** and **cdrx/pyinstaller-windows** are a pair of Docker containers to ease compiling Python applications to binaries / exe files.
 
 Current PyInstaller version used: 3.6.
