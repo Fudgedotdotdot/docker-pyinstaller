@@ -33,14 +33,16 @@ cd $WORKDIR
 
 if [ -f requirements.txt ]; then
     pip install -r requirements.txt
-fi # [ -f requirements.txt ]
-
-echo "$@"
-
-if [[ "$@" == "" ]]; then
-    pyinstaller --clean -y --dist ./dist/windows --workpath /tmp *.spec
-    chown -R --reference=. ./dist/windows
 else
-    sh -c "$@"
-fi # [[ "$@" == "" ]]
+    echo "requirements.txt not found - skipping package install..."
+fi 
+
+if [[ -z "$1" ]]; then
+	echo "Usage: <script to compile>"
+	exit
+fi
+
+pyinstaller --onefile --clean -y --distpath ./dist --workpath /tmp $1
+chown -R --reference=. ./dist/
+
 
